@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentoria Worklife</title>
+<meta name="description" content="Mentoria Worklife para donos de negócio que não separam vida pessoal e profissional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap">
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#1a1512;
+    --ink-soft:#6b6058;
+    --accent:#c15f3c;
+    --accent-deep:#93472c;
+    --accent-tint:#f4e6de;
+    --surface:#f8f5f1;
+    --line:#e7e0d8;
+    --font: "Poppins", "Segoe UI", Arial, sans-serif;
+    color-scheme: light;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--font);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%;display:block;}
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 clamp(20px, 5vw, 64px);
+  }
+
+  .prose{
+    max-width:640px;
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font);
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    margin:0 0 18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:2px;
+    background:var(--accent);
+    display:inline-block;
+    border-radius:2px;
+  }
+
+  h1,h2,h3{
+    font-family:var(--font);
+    margin:0;
+    text-wrap:balance;
+    color:var(--ink);
+  }
+
+  h1{
+    font-size:clamp(1.9rem, 3.6vw, 2.85rem);
+    font-weight:700;
+    line-height:1.28;
+    letter-spacing:-0.01em;
+  }
+
+  h2{
+    font-size:clamp(1.6rem, 3vw, 2.3rem);
+    font-weight:600;
+    line-height:1.24;
+    letter-spacing:-0.005em;
+  }
+
+  p{margin:0;}
+
+  .lede{
+    font-size:clamp(1.05rem, 1.6vw, 1.2rem);
+    color:var(--ink-soft);
+    font-weight:400;
+  }
+
+  .body-text{
+    font-size:1.02rem;
+    color:var(--ink-soft);
+    font-weight:400;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--accent);
+    color:#fff;
+    font-family:var(--font);
+    font-weight:600;
+    font-size:1rem;
+    padding:16px 30px;
+    border-radius:999px;
+    text-decoration:none;
+    border:1px solid var(--accent);
+    transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
+    box-shadow:0 10px 24px -12px rgba(147,71,44,0.55);
+    cursor:pointer;
+  }
+  .btn:hover{
+    background:var(--accent-deep);
+    border-color:var(--accent-deep);
+    transform:translateY(-2px);
+  }
+  .btn:focus-visible{
+    outline:3px solid var(--accent-deep);
+    outline-offset:3px;
+  }
+  .btn svg{width:18px;height:18px;transition:transform .18s ease;}
+  .btn:hover svg{transform:translateX(3px);}
+
+  section{
+    padding:clamp(64px, 10vw, 128px) 0;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding-top:clamp(28px, 4vw, 56px);
+    padding-bottom:clamp(56px, 9vw, 100px);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(32px, 6vw, 72px);
+    align-items:start;
+  }
+  .hero-copy .lede{
+    margin-top:22px;
+    max-width:520px;
+  }
+  .hero-copy .lede strong{
+    color:var(--ink);
+    font-weight:600;
+  }
+  .hero-mark{
+    display:flex;
+    justify-content:center;
+    align-self:center;
+  }
+  .hero-mark svg{width:100%;max-width:560px;height:auto;}
+
+  .hero-actions{
+    margin-top:34px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+
+  .scroll-cue{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-weight:500;
+  }
+  .scroll-cue svg{width:14px;height:14px;animation:bob 2.2s ease-in-out infinite;}
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(4px);}
+  }
+
+  /* ---------- SECTION 2 ---------- */
+  .porque{
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .porque .wrap{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:clamp(36px, 6vw, 80px);
+    align-items:center;
+  }
+  .porque-diagram{display:flex;justify-content:center;}
+  .porque-diagram svg{width:100%;max-width:340px;height:auto;}
+  .porque-copy p + p{margin-top:16px;}
+  .porque-copy .callout{
+    margin-top:26px;
+    padding-left:18px;
+    border-left:3px solid var(--accent);
+    font-size:1.08rem;
+    font-weight:500;
+    color:var(--ink);
+  }
+
+  /* ---------- SECTION 3: ENTREGAVEIS ---------- */
+  .entregaveis-head{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    margin-bottom:48px;
+  }
+  .meta-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.85rem;
+    font-weight:500;
+    color:var(--ink-soft);
+    background:var(--surface);
+    border:1px solid var(--line);
+    padding:9px 16px;
+    border-radius:999px;
+  }
+  .meta-pill svg{width:15px;height:15px;color:var(--accent-deep);stroke:currentColor;}
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+  }
+  .card{
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:30px 28px;
+    background:#fff;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{
+    border-color:var(--accent);
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px -22px rgba(26,21,18,0.35);
+  }
+  .card-icon{
+    width:44px;height:44px;
+    border-radius:12px;
+    background:var(--accent-tint);
+    color:var(--accent-deep);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .card-icon svg{width:22px;height:22px;}
+  .card h3{
+    font-size:1.08rem;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .card p{
+    font-size:0.94rem;
+    color:var(--ink-soft);
+  }
+
+  .bonus{
+    margin-top:20px;
+    display:flex;
+    gap:22px;
+    align-items:flex-start;
+    background:var(--accent-tint);
+    border:1.5px dashed var(--accent);
+    border-radius:18px;
+    padding:28px 30px;
+  }
+  .bonus-icon{
+    flex:none;
+    width:48px;height:48px;
+    border-radius:12px;
+    background:var(--accent);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .bonus-icon svg{width:24px;height:24px;}
+  .bonus-tag{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    margin-bottom:8px;
+  }
+  .bonus h3{
+    font-size:1.1rem;
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .bonus p{
+    font-size:0.96rem;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- SECTION 4: PARA QUEM ---------- */
+  .para-quem{
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .para-quem .wrap{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:clamp(36px, 6vw, 72px);
+  }
+  .persona-list{
+    list-style:none;
+    margin:32px 0 0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .persona-list li{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    font-size:1rem;
+    color:var(--ink);
+  }
+  .persona-list .tick{
+    flex:none;
+    width:24px;height:24px;
+    border-radius:50%;
+    background:var(--accent);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    margin-top:2px;
+  }
+  .persona-list .tick svg{width:13px;height:13px;}
+  .not-for{
+    margin-top:36px;
+    padding:32px 30px;
+    background:var(--accent-tint);
+    border-left:4px solid var(--accent);
+    border-radius:4px 16px 16px 4px;
+    font-size:clamp(1.05rem, 1.6vw, 1.3rem);
+    line-height:1.45;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .not-for strong{color:var(--accent-deep);font-weight:700;}
+
+  /* ---------- SECTION 5: CTA FINAL ---------- */
+  .cta-final{
+    text-align:center;
+  }
+  .cta-final .wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .cta-final h2{
+    max-width:640px;
+  }
+  .cta-final .lede{
+    margin-top:16px;
+    max-width:480px;
+  }
+  .cta-final .btn{
+    margin-top:34px;
+    font-size:1.08rem;
+    padding:18px 38px;
+  }
+
+  footer{
+    padding:36px 0 48px;
+    border-top:1px solid var(--line);
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .brand-mark{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+  .brand-mark svg{width:20px;height:20px;color:var(--accent);}
+  footer .fine{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+
+  [data-reveal]{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  [data-reveal].is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1;transform:none;transition:none;}
+    .scroll-cue svg{animation:none;}
+  }
+
+  @media (max-width: 860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-mark{margin-top:12px;}
+    .hero-mark svg{max-width:320px;}
+    .porque .wrap{grid-template-columns:1fr;}
+    .porque-diagram{margin-bottom:8px;}
+    .porque-diagram svg{max-width:260px;}
+    .para-quem .wrap{grid-template-columns:1fr;}
+    .cards{grid-template-columns:1fr;}
+    .entregaveis-head{align-items:flex-start;}
+    .meta-pill{border-radius:16px;align-items:flex-start;}
+    .bonus{flex-direction:column;}
+    .hero-actions{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap" style="padding-top:32px; display:flex; align-items:center; justify-content:space-between;">
+  <div class="brand-mark">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="12" r="7" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="12" r="7" stroke="currentColor" stroke-width="1.6"/></svg>
+    Mentoria Worklife
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy" data-reveal>
+      <p class="eyebrow">Mentoria para donos de negócio</p>
+      <h1>Vida pessoal e profissional nunca se separam, principalmente se você é o dono do negócio.</h1>
+      <p class="lede">Isso aqui <strong>não é um grupo de networking</strong>. É uma mentoria pra acompanhar você, dono de negócio, nas duas frentes da sua vida que, na prática, nunca estiveram separadas: a pessoal e a profissional.</p>
+      <div class="hero-actions">
+        <a href="#final" class="btn">
+          Quero fazer parte
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#entregaveis" class="scroll-cue">
+          Veja o que tem dentro
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-mark" aria-hidden="true">
+      <svg viewBox="0 0 560 340">
+        <circle cx="230" cy="180" r="95" fill="none" stroke="var(--ink)" stroke-opacity="0.22" stroke-width="1.6"/>
+        <circle cx="330" cy="180" r="95" fill="var(--accent)" fill-opacity="0.08" stroke="var(--accent)" stroke-width="1.6"/>
+
+        <text x="230" y="58" font-family="Poppins" font-size="14" font-weight="700" letter-spacing="0.05em" fill="var(--ink-soft)" text-anchor="middle">PESSOAL</text>
+        <text x="330" y="58" font-family="Poppins" font-size="14" font-weight="700" letter-spacing="0.05em" fill="var(--accent-deep)" text-anchor="middle">PROFISSIONAL</text>
+
+        <g stroke="var(--ink)" stroke-opacity="0.35" stroke-width="1.1" stroke-dasharray="2 3">
+          <line x1="106" y1="112" x2="163.7" y2="112"/>
+          <line x1="78" y1="158" x2="137.6" y2="158"/>
+          <line x1="78" y1="202" x2="137.6" y2="202"/>
+          <line x1="106" y1="248" x2="163.7" y2="248"/>
+        </g>
+        <g font-family="Poppins" font-size="11" font-weight="500" fill="var(--ink-soft)">
+          <circle cx="106" cy="112" r="2.6" fill="var(--ink-soft)"/>
+          <text x="98" y="115" text-anchor="end">hábitos</text>
+          <circle cx="78" cy="158" r="2.6" fill="var(--ink-soft)"/>
+          <text x="70" y="161" text-anchor="end">organização</text>
+          <circle cx="78" cy="202" r="2.6" fill="var(--ink-soft)"/>
+          <text x="70" y="205" text-anchor="end">saúde</text>
+          <circle cx="106" cy="248" r="2.6" fill="var(--ink-soft)"/>
+          <text x="98" y="251" text-anchor="end">família</text>
+        </g>
+
+        <g stroke="var(--accent)" stroke-opacity="0.4" stroke-width="1.1" stroke-dasharray="2 3">
+          <line x1="454" y1="112" x2="396.3" y2="112"/>
+          <line x1="482" y1="158" x2="422.4" y2="158"/>
+          <line x1="482" y1="202" x2="422.4" y2="202"/>
+          <line x1="454" y1="248" x2="396.3" y2="248"/>
+        </g>
+        <g font-family="Poppins" font-size="11" font-weight="500" fill="var(--accent-deep)">
+          <circle cx="454" cy="112" r="2.6" fill="var(--accent)"/>
+          <text x="462" y="115" text-anchor="start">equipe</text>
+          <circle cx="482" cy="158" r="2.6" fill="var(--accent)"/>
+          <text x="490" y="161" text-anchor="start">clientes</text>
+          <circle cx="482" cy="202" r="2.6" fill="var(--accent)"/>
+          <text x="490" y="205" text-anchor="start">vendas</text>
+          <circle cx="454" cy="248" r="2.6" fill="var(--accent)"/>
+          <text x="462" y="251" text-anchor="start">marketing</text>
+        </g>
+
+        <rect x="250" y="167" width="60" height="26" rx="13" fill="#fff"/>
+        <text x="280" y="185" font-family="Poppins" font-size="15" font-weight="700" fill="var(--ink)" text-anchor="middle">você</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="porque">
+  <div class="wrap">
+    <div class="porque-diagram" aria-hidden="true">
+      <svg viewBox="0 0 300 220">
+        <circle cx="118" cy="110" r="82" fill="none" stroke="var(--ink)" stroke-opacity="0.18" stroke-width="1.6"/>
+        <circle cx="182" cy="110" r="82" fill="var(--accent)" fill-opacity="0.12" stroke="var(--accent)" stroke-width="1.6"/>
+        <text x="72" y="112" font-family="Poppins" font-size="12" font-weight="600" fill="var(--ink-soft)" text-anchor="middle">casa</text>
+        <text x="228" y="112" font-family="Poppins" font-size="12" font-weight="600" fill="var(--accent-deep)" text-anchor="middle">negócio</text>
+        <text x="150" y="115" font-family="Poppins" font-size="12.5" font-weight="700" fill="var(--ink)" text-anchor="middle">mesma</text>
+        <text x="150" y="131" font-family="Poppins" font-size="12.5" font-weight="700" fill="var(--ink)" text-anchor="middle">cabeça</text>
+      </svg>
+    </div>
+    <div class="porque-copy" data-reveal>
+      <p class="eyebrow">Por que isso importa</p>
+      <h2>A decisão de terça de manhã e o jantar de domingo saem da mesma cabeça cansada</h2>
+      <p class="body-text" style="margin-top:20px;">Quando você é dono do negócio, não existe um botão que separa "modo empresário" de "modo pessoa". A conta que não fechou segue com você no jantar. A briga em casa entra na reunião de segunda. Tratar isso como duas vidas independentes só faz você carregar os dois pesos sozinho, sem espaço pra pensar com clareza em nenhum dos dois.</p>
+      <p class="callout">A mentoria Worklife trabalha essa vida inteira, não só a parte que cabe num crachá.</p>
+    </div>
+  </div>
+</section>
+
+<section id="entregaveis">
+  <div class="wrap">
+    <div class="entregaveis-head" data-reveal>
+      <div>
+        <p class="eyebrow">O que tem dentro</p>
+        <h2>Os quatro pilares da mentoria</h2>
+      </div>
+      <span class="meta-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 9c-1.7 0-3 1.3-3 3s1.3 3 3 3c2.5 0 3.5-6 6-6s3.5 6 6 6c1.7 0 3-1.3 3-3s-1.3-3-3-3c-2.5 0-3.5 6-6 6s-3.5-6-6-6Z"/></svg>
+        Mentoria contínua: enquanto você estiver dentro, permanece
+      </span>
+    </div>
+    <div class="cards" data-reveal>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        </div>
+        <h3>Encontros quinzenais de conteúdo + hotseat</h3>
+        <p>Sessões ao vivo pra trazer conteúdo novo e abrir espaço pra trazer o problema real que tá travando você naquela semana.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+        </div>
+        <h3>Suporte + grupo de membros no WhatsApp</h3>
+        <p>Um espaço pra tirar dúvida no dia a dia e trocar com quem também tá tocando negócio sem terceirizar a própria vida.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><rect x="14" y="14" width="7" height="7" rx="1.2"/></svg>
+        </div>
+        <h3>Área de membros com conteúdos, materiais e ferramentas</h3>
+        <p>Tudo organizado num só lugar, pra você voltar sempre que precisar sem depender só do que lembra do encontro.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3.1-6.5 7-6.5s7 2.5 7 6.5"/></svg>
+        </div>
+        <h3>Convidados especialistas</h3>
+        <p>De tempos em tempos, gente de fora traz um olhar diferente pra questões específicas, sem enrolação e direto ao ponto.</p>
+      </div>
+    </div>
+    <div class="bonus" data-reveal>
+      <div class="bonus-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 8h18M12 8v13M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+      </div>
+      <div>
+        <span class="bonus-tag">Bônus surpresa · primeiros participantes</span>
+        <h3>Tem um extra pra quem entrar primeiro</h3>
+        <p>Quem confirmar a vaga entre os primeiros participantes recebe um bônus surpresa, revelado só depois da inscrição confirmada. Não vou contar aqui do que se trata de propósito, mas ele não faz parte da oferta padrão e não vai se repetir nas próximas turmas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="para-quem">
+  <div class="wrap">
+    <div data-reveal>
+      <p class="eyebrow">Para quem é</p>
+      <h2>Para o dono de negócio que carrega os dois lados sozinho</h2>
+      <p class="body-text" style="margin-top:16px;">Isso é pra você se:</p>
+      <ul class="persona-list">
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Você toma decisão da casa e do negócio com a mesma cabeça, no mesmo dia.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Fatura, mas não tem com quem comparar de verdade se tá indo bem.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Mesmo com sócio, gestor ou equipe, a decisão final e o peso dela caem sempre em cima de você.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>Sente que, se parar um dia, o negócio para junto com você.</li>
+      </ul>
+    </div>
+    <div data-reveal>
+      <div style="height:100%; display:flex; align-items:center;">
+        <div class="not-for">
+          <strong>Isso não é pra quem busca só trocar contato ou fechar parceria.</strong> É pra quem quer ser acompanhado de verdade, na vida e no negócio, porque aqui as duas coisas são a mesma coisa.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="final">
+  <div class="wrap" data-reveal>
+    <p class="eyebrow" style="justify-content:center;">Próximo passo</p>
+    <h2>Bora juntar as duas pontas da sua vida?</h2>
+    <p class="lede">Vagas limitadas pra manter o acompanhamento próximo de verdade.</p>
+    <a href="#" class="btn">
+      Quero fazer parte
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand-mark">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="12" r="7" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="12" r="7" stroke="currentColor" stroke-width="1.6"/></svg>
+      Mentoria Worklife
+    </div>
+    <p class="fine">Mentoria contínua para donos de negócio.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('[data-reveal]');
+    if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
