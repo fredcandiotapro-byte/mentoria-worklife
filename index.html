@@ -273,6 +273,44 @@
     color:var(--ink-soft);
   }
 
+  .card-featured{grid-column:1 / -1;}
+
+  .topics{
+    margin-top:22px;
+    padding-top:22px;
+    border-top:1px dashed var(--line);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .topics-label{
+    display:block;
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .topics-col.is-pessoal .topics-label{color:var(--ink-soft);}
+  .topics-col.is-profissional .topics-label{color:var(--accent-deep);}
+  .topics-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .topics-tags li{
+    font-size:0.82rem;
+    font-weight:500;
+    padding:6px 13px;
+    border-radius:999px;
+    border:1px solid var(--line);
+  }
+  .is-pessoal .topics-tags li{background:var(--surface);color:var(--ink-soft);}
+  .is-profissional .topics-tags li{background:var(--accent-tint);color:var(--accent-deep);border-color:transparent;}
+
   .bonus{
     margin-top:20px;
     display:flex;
@@ -431,6 +469,7 @@
     .porque-diagram svg{max-width:260px;}
     .para-quem .wrap{grid-template-columns:1fr;}
     .cards{grid-template-columns:1fr;}
+    .topics{grid-template-columns:1fr;gap:20px;}
     .entregaveis-head{align-items:flex-start;}
     .meta-pill{border-radius:16px;align-items:flex-start;}
     .bonus{flex-direction:column;}
@@ -547,12 +586,32 @@
       </span>
     </div>
     <div class="cards" data-reveal>
-      <div class="card">
+      <div class="card card-featured">
         <div class="card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
         </div>
         <h3>Encontros quinzenais de conteúdo + hotseat</h3>
         <p>Sessões ao vivo pra trazer conteúdo novo e abrir espaço pra trazer o problema real que tá travando você naquela semana.</p>
+        <div class="topics">
+          <div class="topics-col is-pessoal">
+            <span class="topics-label">Na vida pessoal</span>
+            <ul class="topics-tags">
+              <li>hábitos</li>
+              <li>organização</li>
+              <li>saúde</li>
+              <li>família</li>
+            </ul>
+          </div>
+          <div class="topics-col is-profissional">
+            <span class="topics-label">Na vida profissional</span>
+            <ul class="topics-tags">
+              <li>equipe</li>
+              <li>clientes</li>
+              <li>vendas</li>
+              <li>marketing</li>
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="card">
         <div class="card-icon">
