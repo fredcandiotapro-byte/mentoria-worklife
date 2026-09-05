@@ -273,43 +273,63 @@
     color:var(--ink-soft);
   }
 
-  .card-featured{grid-column:1 / -1;}
-
-  .topics{
-    margin-top:22px;
-    padding-top:22px;
-    border-top:1px dashed var(--line);
+  /* ---------- SECTION: ASSUNTOS ---------- */
+  .assuntos{
+    background:var(--surface);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .assuntos-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .assuntos-head .lede{margin-top:16px;}
+  .assuntos-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:24px;
+    gap:clamp(32px, 6vw, 72px);
   }
-  .topics-label{
-    display:block;
-    font-size:11.5px;
-    font-weight:700;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    margin-bottom:10px;
-  }
-  .topics-col.is-pessoal .topics-label{color:var(--ink-soft);}
-  .topics-col.is-profissional .topics-label{color:var(--accent-deep);}
-  .topics-tags{
+  .assuntos-label{
     display:flex;
-    flex-wrap:wrap;
-    gap:8px;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .assuntos-label .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .assuntos-col.is-pessoal .assuntos-label{color:var(--ink-soft);}
+  .assuntos-col.is-pessoal .assuntos-label .dot{background:var(--ink-soft);}
+  .assuntos-col.is-profissional .assuntos-label{color:var(--accent-deep);}
+  .assuntos-col.is-profissional .assuntos-label .dot{background:var(--accent);}
+  .topic-list{
     list-style:none;
     margin:0;
     padding:0;
+    display:flex;
+    flex-direction:column;
   }
-  .topics-tags li{
-    font-size:0.82rem;
-    font-weight:500;
-    padding:6px 13px;
-    border-radius:999px;
-    border:1px solid var(--line);
+  .topic-list li{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    font-size:1.02rem;
+    color:var(--ink);
   }
-  .is-pessoal .topics-tags li{background:var(--surface);color:var(--ink-soft);}
-  .is-profissional .topics-tags li{background:var(--accent-tint);color:var(--accent-deep);border-color:transparent;}
+  .topic-list li:first-child{padding-top:0;}
+  .topic-list .n{
+    font-family:var(--font);
+    font-size:0.85rem;
+    font-weight:700;
+    color:var(--ink-soft);
+    flex:none;
+    width:22px;
+  }
+  .assuntos-col.is-profissional .topic-list .n{color:var(--accent-deep);}
 
   .bonus{
     margin-top:20px;
@@ -469,7 +489,7 @@
     .porque-diagram svg{max-width:260px;}
     .para-quem .wrap{grid-template-columns:1fr;}
     .cards{grid-template-columns:1fr;}
-    .topics{grid-template-columns:1fr;gap:20px;}
+    .assuntos-grid{grid-template-columns:1fr;gap:36px;}
     .entregaveis-head{align-items:flex-start;}
     .meta-pill{border-radius:16px;align-items:flex-start;}
     .bonus{flex-direction:column;}
@@ -586,32 +606,12 @@
       </span>
     </div>
     <div class="cards" data-reveal>
-      <div class="card card-featured">
+      <div class="card">
         <div class="card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
         </div>
         <h3>Encontros quinzenais de conteúdo + hotseat</h3>
         <p>Sessões ao vivo pra trazer conteúdo novo e abrir espaço pra trazer o problema real que tá travando você naquela semana.</p>
-        <div class="topics">
-          <div class="topics-col is-pessoal">
-            <span class="topics-label">Na vida pessoal</span>
-            <ul class="topics-tags">
-              <li>hábitos</li>
-              <li>organização</li>
-              <li>saúde</li>
-              <li>família</li>
-            </ul>
-          </div>
-          <div class="topics-col is-profissional">
-            <span class="topics-label">Na vida profissional</span>
-            <ul class="topics-tags">
-              <li>equipe</li>
-              <li>clientes</li>
-              <li>vendas</li>
-              <li>marketing</li>
-            </ul>
-          </div>
-        </div>
       </div>
       <div class="card">
         <div class="card-icon">
@@ -643,6 +643,38 @@
         <span class="bonus-tag">Bônus surpresa · primeiros participantes</span>
         <h3>Tem um extra pra quem entrar primeiro</h3>
         <p>Quem confirmar a vaga entre os primeiros participantes recebe um bônus surpresa, revelado só depois da inscrição confirmada. Não vou contar aqui do que se trata de propósito, mas ele não faz parte da oferta padrão e não vai se repetir nas próximas turmas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="assuntos">
+  <div class="wrap">
+    <div class="assuntos-head" data-reveal>
+      <p class="eyebrow">Assuntos abordados</p>
+      <h2>10 assuntos que vamos tratar nos encontros</h2>
+      <p class="lede">Uma prévia dos temas que entram em pauta ao longo da mentoria, dos dois lados da sua vida.</p>
+    </div>
+    <div class="assuntos-grid" data-reveal>
+      <div class="assuntos-col is-pessoal">
+        <span class="assuntos-label"><span class="dot"></span>Vida pessoal</span>
+        <ol class="topic-list">
+          <li><span class="n">01</span>Rotina e gestão do tempo</li>
+          <li><span class="n">02</span>Saúde física e mental</li>
+          <li><span class="n">03</span>Relacionamentos e família</li>
+          <li><span class="n">04</span>Hábitos e disciplina</li>
+          <li><span class="n">05</span>Descanso e lazer</li>
+        </ol>
+      </div>
+      <div class="assuntos-col is-profissional">
+        <span class="assuntos-label"><span class="dot"></span>Vida profissional</span>
+        <ol class="topic-list">
+          <li><span class="n">06</span>Posicionamento e marca pessoal</li>
+          <li><span class="n">07</span>Vendas e negociação</li>
+          <li><span class="n">08</span>Gestão de equipe</li>
+          <li><span class="n">09</span>Marketing e aquisição de clientes</li>
+          <li><span class="n">10</span>Finanças do negócio</li>
+        </ol>
       </div>
     </div>
   </div>
